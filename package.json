@@ -1,0 +1,22 @@
+{
+  "name": "ng-s3-analytics",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
+  },
+  "dependencies": {
+    "html2canvas": "1.0.0-rc.3",
+    "tslib": "^1.9.0"
+  },
+  "main": "bundles/ng-s3-analytics.umd.js",
+  "module": "fesm5/ng-s3-analytics.js",
+  "es2015": "fesm2015/ng-s3-analytics.js",
+  "esm5": "esm5/ng-s3-analytics.js",
+  "esm2015": "esm2015/ng-s3-analytics.js",
+  "fesm5": "fesm5/ng-s3-analytics.js",
+  "fesm2015": "fesm2015/ng-s3-analytics.js",
+  "typings": "ng-s3-analytics.d.ts",
+  "metadata": "ng-s3-analytics.metadata.json",
+  "sideEffects": false
+}
