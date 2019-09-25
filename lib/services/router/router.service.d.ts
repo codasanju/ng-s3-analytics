@@ -47,4 +47,5 @@ export declare class RouterService {
      * @param screenshotName - Screenshot image
      */
     captureTemplate(screenshotName: string): void;
+    processRegexOperations(text: string): string;
 }
