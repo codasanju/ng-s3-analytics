@@ -1,0 +1,8 @@
+export declare enum EventLabels {
+    PAGE_LOAD = "PAGE_LOAD",
+    MOUSE_HOVER = "MOUSE_HOVER",
+    BUTTON_CLICK = "BUTTON_CLICK",
+    MOUSE_MOVE = "MOUSE_MOVE",
+    SCROLL = "SCROLL",
+    CONSOLE_ERROR = "CONSOLE_ERROR"
+}

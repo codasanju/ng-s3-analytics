@@ -8,7 +8,6 @@ export declare let environment: {
         screenshotBucket: string;
     };
     fileName: string;
-    relativeFolders: any[];
     region: string;
     isAuth: boolean;
     isPageLoadingToBeDetected: boolean;
