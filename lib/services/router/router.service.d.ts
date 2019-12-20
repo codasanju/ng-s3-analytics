@@ -21,25 +21,6 @@ export declare class RouterService {
      */
     analyticsPushData(event: any): void;
     /**
-     * Capturing Screenshot of the page
-     * @param screenshotName uploaded screenshot name
-     *
-    public captureScreenshot(screenshotName: string): void {
-      console.log('called');
-      html2canvas(document.body, {
-        logging: true,
-        allowTaint: true,
-        width: document.body.clientWidth,
-        height: document.body.scrollHeight || window.innerHeight
-      }).then((canvas) => {
-        // this.analyticsService.saveScreenshotsInS3(canvas.toDataURL(), screenshotName);
-        console.log('image uploading...');
-      }).catch(error => {
-        console.log('error', error);
-      });
-    }
-    */
-    /**
      * Waiting for page to load completely
      * @param event
      */
