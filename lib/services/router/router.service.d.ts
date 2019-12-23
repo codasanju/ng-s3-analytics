@@ -10,6 +10,7 @@ export declare class RouterService {
     private document;
     analyticsData: AnalyticsBean;
     eventLabels: typeof EventLabels;
+    navigateOn: string;
     constructor(routes: Router, analyticsService: AnalyticsService, dataStorage: DataStorageService, document: any);
     /**
      * Tracking router events
