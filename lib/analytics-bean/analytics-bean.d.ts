@@ -28,4 +28,5 @@ export interface AnalyticsBean {
     additionalInfo: string;
     utm: string;
     demographicInfo: string;
+    htmlElement: any;
 }
