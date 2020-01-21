@@ -1,6 +1,7 @@
 import { AnalyticsBean } from '../../analytics-bean/analytics-bean';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
+import { EventLabels } from '../../types/event.types';
 /**
  * Analytics Service
  */
@@ -12,6 +13,7 @@ export declare class AnalyticsService {
      */
     sessionId: string;
     demographicInfo: any;
+    eventLabels: typeof EventLabels;
     constructor(cookieService: CookieService, httpService: HttpClient);
     /**
      * Checking whether sessionId present in cookie or not
