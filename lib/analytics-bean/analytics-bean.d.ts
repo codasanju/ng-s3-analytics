@@ -1,7 +1,7 @@
 import { KeyStrokeEventType } from '../types/event.types';
 export declare class Configuration {
     dataCollectionApi: string;
-    restrictIPRange: string;
+    restrictIPRange?: string;
 }
 /**
  * Analytics Object Structure

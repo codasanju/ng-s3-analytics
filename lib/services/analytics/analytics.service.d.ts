@@ -1,4 +1,4 @@
-import { AnalyticsBean, PerformanceBean } from '../../analytics-bean/analytics-bean';
+import { AnalyticsBean } from '../../analytics-bean/analytics-bean';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
 import { EventLabels, KeyStrokeEventType, Constants } from '../../types/event.types';
@@ -43,9 +43,9 @@ export declare class AnalyticsService {
      * Converting JSON Array to string
      * @param data
      */
-    processForAthena(data: Array<AnalyticsBean>): string;
+    private processForAthena;
     /**
-      * Pushing data to Authenticated Bucket S3
+      * Preparing data to be pushed to DataStorage
       * @param data  data to be pushed
       */
     private publishTOAuthS3;
@@ -56,9 +56,9 @@ export declare class AnalyticsService {
      */
     private pushDataToS3;
     /**
-     * Uploading captured base64 image to S3
-     * @param image - Base64 String
-     * @param screenshotName - Screenshot name linked with pageLoaded data
+     * Save the captured HTML to the data collection
+     * @param htmlTemplate - DOM Content
+     * @param screenshotName - filename to be saved
      */
     saveScreenshotsInS3(htmlTemplate: string, screenshotName: string): void;
     /**
@@ -81,21 +81,21 @@ export declare class AnalyticsService {
      * Event details
      * @param value
      */
-    getEventDetails(value: any): string;
+    private getEventDetails;
     /**
      * Get HTML Content
      * @param targetElement - target element
      */
-    getHtmlElement(targetElement: any): string;
+    private getHtmlElement;
     /**
      * Performance details
      */
-    getPerformanceDetails(): PerformanceBean;
+    private getPerformanceDetails;
     /**
      * Memory usage of the application is provided by Google Chrome
      * @param userAgent - User agent to check the browser
      */
-    geMemoryUsageInfo(userAgent: any): any;
+    private geMemoryUsageInfo;
     /**
      * Getting UTM Parameters by processing current pageURL
      * @param url - Page URL
