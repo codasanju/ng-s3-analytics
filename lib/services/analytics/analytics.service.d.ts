@@ -1,19 +1,26 @@
-import { AnalyticsBean } from '../../analytics-bean/analytics-bean';
+import { AnalyticsBean, PerformanceBean } from '../../analytics-bean/analytics-bean';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
-import { EventLabels } from '../../types/event.types';
+import { EventLabels, KeyStrokeEventType, Constants } from '../../types/event.types';
 /**
  * Analytics Service
  */
 export declare class AnalyticsService {
     private cookieService;
     private httpService;
-    /**
-     * SessionId of plugin
-     */
+    /** SessionId of plugin */
     sessionId: string;
+    /** Demographic info */
     demographicInfo: any;
+    /** Event label constants */
     eventLabels: typeof EventLabels;
+    /** Constants */
+    constants: typeof Constants;
+    /**
+     * Analytics Service constructor
+     * @param cookieService
+     * @param httpService
+     */
     constructor(cookieService: CookieService, httpService: HttpClient);
     /**
      * Checking whether sessionId present in cookie or not
@@ -21,15 +28,17 @@ export declare class AnalyticsService {
      */
     private setSessionId;
     /**
-     * Pushing Analytics data to different bucket based on Authentication flag
-     * @param data
+     * Checking the IP range to be restrict
+     * @param data - data to be pushed
      */
     pushData(data: any): void;
     /**
-     * Pushing data to UnAuthenticated Bucket S3
-     * @param data
+     * IP range restriction added
+     * @restrictIPRange is a regex
+     * if @restrictIPRange is match with current IP,
+     * the analytics data will be restricted
      */
-    private publishTOUnAuthS3;
+    private checkIpRange;
     /**
      * Converting JSON Array to string
      * @param data
@@ -37,13 +46,15 @@ export declare class AnalyticsService {
     processForAthena(data: Array<AnalyticsBean>): string;
     /**
       * Pushing data to Authenticated Bucket S3
-      * @param data
+      * @param data  data to be pushed
       */
-    publishTOAuthS3(data: any): void;
+    private publishTOAuthS3;
     /**
-     * Construct S3 Object using AWS SDK
+     * Pushing data to corresponding bucket using data collection api
+     * @param path - service path
+     * @param data - data to be pushed
      */
-    private constructS3Object;
+    private pushDataToS3;
     /**
      * Uploading captured base64 image to S3
      * @param image - Base64 String
@@ -62,7 +73,29 @@ export declare class AnalyticsService {
      * @param eventName  - Type of event
      * @param screenshotName  - file name of saved screenshot if the event is PageLoaded
      */
-    setAnalyticsData(userData: any, eventDetails: any, eventName: string, screenshotName: string, eventComponent?: string): AnalyticsBean;
+    setAnalyticsData(userData: any, eventDetails: any, eventName: string, screenshotName: string, optional?: {
+        eventComponent?: string;
+        keyStrokeData?: KeyStrokeEventType;
+    }): AnalyticsBean;
+    /**
+     * Event details
+     * @param value
+     */
+    getEventDetails(value: any): string;
+    /**
+     * Get HTML Content
+     * @param targetElement - target element
+     */
+    getHtmlElement(targetElement: any): string;
+    /**
+     * Performance details
+     */
+    getPerformanceDetails(): PerformanceBean;
+    /**
+     * Memory usage of the application is provided by Google Chrome
+     * @param userAgent - User agent to check the browser
+     */
+    geMemoryUsageInfo(userAgent: any): any;
     /**
      * Getting UTM Parameters by processing current pageURL
      * @param url - Page URL

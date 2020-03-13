@@ -18,7 +18,7 @@ In-house analytics for enterprise level applications using Angular 6+, AWS S3 & 
 
 Tracking events is important. 
 Knowing which section of the application the user visits frequently is extremely important. 
-This plugin captures each and every action the user performs on the application like - button click, scroll, hover and page visit. 
+This plugin captures each and every action the user performs on the application like - button click, scroll, hover and page visit, console errors & key stroke. 
 Analytics are saved in S3 bucket for further analysis.
 
 <a name="usage"></a>
@@ -37,51 +37,24 @@ npm install --save ng-s3-analytics
 import { NgS3AnalyticsModule } from '@codaglobal/ng-s3-analytics';
 
 imports: [
-     NgS3AnalyticsModule.forRoot(credentials: CredentialsBean, pageDetection: Boolean)
+     NgS3AnalyticsModule.forRoot(configuration: Configuration, pageDetection: Boolean)
 ]
 ```
-The forRoot method accepts two parameters -  credentials (S3 bucket and other information) and a boolean which defines whether to track page load or not
+The forRoot method accepts two parameters -  configurations (data collection api url & IP range to be restricted, it can have regex eg:- /192.168.143.*/g ) and a boolean which defines whether to track page load or not
 
-Credential Bean Structure
+Configuration Bean Structure
 
 ```TS
-credential: {
-  accessKeyId: string, // IAM user access Id
-  secretAccessKey: string, // IAM user  secret key
-  sessionToken: string, // optional
-  bucketName: {
-    authenticatedBucket: string, // optional
-    publicBucket: string
-  },
-  fileName: string, // file name to be saved in S3
-  region: string // S3 bucket region
+configuration: {
+  dataCollectionApi: string,
+  restrictIPRange: string
 }
 ```
-The credentials are stored in environment of analytics library. These credentials are used to push tracked data onto S3 bucket
+The configuration are stored in environment of analytics library. These configuration are used to push tracked data onto S3 bucket
 
 ### Step 2
 
-AWS-sdk plugin is used in this library to push the data into S3 bucket. Installation command for aws-sdk is below
-
-```bash
-npm install --save aws-sdk
-```
-
-In the polyfills TS file,
-
-```typescript
-(window as any).global = window;
-```
-This makes the AWS sdk files global.
-
-If any error occurs like `Cannot find module 'stream'`. Run the below command
-
-```bash
-npm install @types/node
-```
-### Step 3
-
-This library can be used as plugin to track `page load` , `button click` , `scroll` and `hover` events on the page.
+This library can be used as plugin to track `page load` , `button click` , `scroll`, `hover`, `mouse move`, `console errors` & `key strokes` events on the page.
 Every event has custom data that is structured as a bean.
 
 ```typescript
@@ -116,10 +89,12 @@ The available directives are:
 Button Clicked : `track-btn`,
 Hover : `track-buttonHover`,
 Scroll : `track-scroll`
+Key Stroke : `track-keyStroke`
 
-### Step 4 
 
-You can also separately inject an environment service in order to configure the credentials and authentication state
+### Step 3
+
+You can also separately inject an environment service in order to configure the configuration.
 
 ```typescript
 import { EnvironmentService } from '@codaglobal/ng-s3-analytics';
@@ -128,28 +103,14 @@ constructor(private environmentService: EnvironmentService) { }
 
 export class TestComponent {
 
-  credentials: CredentialsBean;
+  configuration: Configuration;
   isPageLoadingToBeDetected: Boolean;
 
   exampleMethod() {
-    this.environmentService.setCredentialsToEnvironment(credentials, isPageLoadingToBeDetected);
+    this.environmentService.setConfigurationToEnvironment(configuration, isPageLoadingToBeDetected);
   }
 }
 
-```
-```typescript
-import { EnvironmentService } from '@codaglobal/ng-s3-analytics';
-
-constructor(private environmentService: EnvironmentService) { }
-
-export class TestComponent {
-
-  isAuth: Boolean;
-
-  exampleMethod() {
-    this.environmentService.setAuthentication(isAuth);
-  }
-}
 ```
 
 
