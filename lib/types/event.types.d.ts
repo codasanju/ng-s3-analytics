@@ -17,6 +17,7 @@ export declare class KeyStrokeEventType {
     keyCode: string;
     elementId: string;
     isForm: boolean;
+    form: string;
     tagName: string;
     htmlElementType: string;
     value: string;
