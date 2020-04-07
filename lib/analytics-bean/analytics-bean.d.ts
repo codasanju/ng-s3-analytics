@@ -25,6 +25,7 @@ export interface AnalyticsBean {
     keyStrokeData: KeyStrokeEventType;
     origin: string;
     performance: PerformanceBean;
+    errors: string;
 }
 export interface PerformanceBean {
     navigation: PerformanceNavigation;

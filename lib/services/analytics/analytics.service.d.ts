@@ -76,6 +76,7 @@ export declare class AnalyticsService {
     setAnalyticsData(userData: any, eventDetails: any, eventName: string, screenshotName: string, optional?: {
         eventComponent?: string;
         keyStrokeData?: KeyStrokeEventType;
+        consoleErrors?: string;
     }): AnalyticsBean;
     /**
      * Event details
@@ -87,6 +88,7 @@ export declare class AnalyticsService {
      * @param targetElement - target element
      */
     private getHtmlElement;
+    private getEmptyKeyStrokeData;
     /**
      * Performance details
      */
