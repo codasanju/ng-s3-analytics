@@ -23,6 +23,7 @@ export declare class KeyStrokeDirective {
      * @param $event - KeyPress Event
      */
     onKeyStroke($event: any): void;
+    checkClassNames(classList: Array<string>): boolean;
     /**
      * Sending data
      * @param keyStroke - Captured KeyStroke data

@@ -47,7 +47,7 @@ Configuration Bean Structure
 ```TS
 configuration: {
   dataCollectionApi: string,
-  restrictIPRange: string
+  remoteConfigApi: string
 }
 ```
 The configuration are stored in environment of analytics library. These configuration are used to push tracked data onto S3 bucket

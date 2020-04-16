@@ -2,12 +2,14 @@ import { AnalyticsBean } from '../../analytics-bean/analytics-bean';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
 import { EventLabels, KeyStrokeEventType, Constants } from '../../types/event.types';
+import { PluginConfigService } from './handleConfig';
 /**
  * Analytics Service
  */
 export declare class AnalyticsService {
     private cookieService;
     private httpService;
+    private pluginConfig;
     /** SessionId of plugin */
     sessionId: string;
     /** Demographic info */
@@ -21,7 +23,7 @@ export declare class AnalyticsService {
      * @param cookieService
      * @param httpService
      */
-    constructor(cookieService: CookieService, httpService: HttpClient);
+    constructor(cookieService: CookieService, httpService: HttpClient, pluginConfig: PluginConfigService);
     /**
      * Checking whether sessionId present in cookie or not
      * if no session id cookie present, adding new session id otherwise reusing the session id value
@@ -32,13 +34,6 @@ export declare class AnalyticsService {
      * @param data - data to be pushed
      */
     pushData(data: any): void;
-    /**
-     * IP range restriction added
-     * @restrictIPRange is a regex
-     * if @restrictIPRange is match with current IP,
-     * the analytics data will be restricted
-     */
-    private checkIpRange;
     /**
      * Converting JSON Array to string
      * @param data
@@ -103,8 +98,4 @@ export declare class AnalyticsService {
      * @param url - Page URL
      */
     private getUTMParameters;
-    /**
-     * Set user demographic information in cookies
-     */
-    private getIp;
 }

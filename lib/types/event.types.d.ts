@@ -22,4 +22,5 @@ export declare class KeyStrokeEventType {
     htmlElementType: string;
     value: string;
     code: string;
+    constructor();
 }

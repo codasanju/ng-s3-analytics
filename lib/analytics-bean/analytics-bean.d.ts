@@ -1,7 +1,17 @@
 import { KeyStrokeEventType } from '../types/event.types';
 export declare class Configuration {
     dataCollectionApi: string;
-    restrictIPRange?: string;
+    remoteConfigApi: string;
+}
+export interface PluginConfig {
+    ignoreUrls: Array<string>;
+    ignoreCssRules: Array<string>;
+    showConsent: boolean;
+    consentContent: string;
+    disableTracking: boolean;
+    ignoreIPRanges: string;
+    ignoreDomains: Array<string>;
+    disableDemographicInfo: boolean;
 }
 /**
  * Analytics Object Structure
