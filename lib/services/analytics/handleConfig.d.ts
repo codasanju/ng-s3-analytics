@@ -28,7 +28,7 @@ export declare class PluginConfigService {
     /**
   * Set user demographic information in cookies
   */
-    private getIp;
+    getIp(): Promise<any>;
     setDemographicInfo(): any;
     getDemographicInfo(): any;
     checkShowConsent(content: string): void;
