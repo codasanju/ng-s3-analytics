@@ -57,38 +57,19 @@ The configuration are stored in environment of analytics library. These configur
 This library can be used as plugin to track `page load` , `button click` , `scroll`, `hover`, `mouse move`, `console errors` & `key strokes` events on the page.
 Every event has custom data that is structured as a bean.
 
-```typescript
-AnalyticsBean: {
-  pageUrl: string, // window url
-  redirectedTo: string, // if the button click triggers any redirection
-  componentName: string, // in which component the button belongs
-  id: string, // to uniquely identified the element
-  placement: string // to identify where the button belongs in html, (eg:- Header)
-  // additional data ...
-}
-```
 
 In the html, add the directive along with the data required in the tag to be tracked.
 
 ```html
-<button type="button" [track-buttonHover]='onClickButton' [track-btn]='onClickButton'>Logout</button>
+<button type="button" [track-buttonHover]='additionalInfoToBeTracked'
+[track-btn]='additionalInfoToBeTracked'>Logout</button>
 ```
-In the TS file,
+Additional info can be any JSON object that to be tracked
 
-```typescript
-onClickButton: AnalyticsBean = {
-    pageUrl: "",
-    redirectedTo: "",
-    componentName: "",
-    id: "",
-    placement: ""
-    // additional data ...
-};
-```
-The available directives are:
-Button Clicked : `track-btn`,
-Hover : `track-buttonHover`,
-Scroll : `track-scroll`
+The available directives are:<br>
+Button Clicked : `track-btn`,<br>
+Hover : `track-buttonHover`,<br>
+Scroll : `track-scroll`,<br>
 Key Stroke : `track-keyStroke`
 
 
@@ -104,7 +85,7 @@ constructor(private environmentService: EnvironmentService) { }
 export class TestComponent {
 
   configuration: Configuration;
-  isPageLoadingToBeDetected: Boolean;
+  isPageLoadingToBeDetected: boolean;
 
   exampleMethod() {
     this.environmentService.setConfigurationToEnvironment(configuration, isPageLoadingToBeDetected);

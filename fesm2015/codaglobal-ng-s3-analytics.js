@@ -1,4 +1,4 @@
-import { Injectable, Directive, Input, HostListener, ElementRef, Renderer2, Injector, NgModule, Component, defineInjectable, inject, INJECTOR } from '@angular/core';
+import { Injectable, Directive, HostListener, Input, ElementRef, Renderer2, Injector, NgModule, Component, defineInjectable, inject, INJECTOR } from '@angular/core';
 import { Subject, fromEvent, interval } from 'rxjs';
 import { __awaiter } from 'tslib';
 import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
