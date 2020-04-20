@@ -1,5 +1,4 @@
 import { AnalyticsBean } from '../../analytics-bean/analytics-bean';
-import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
 import { EventLabels, KeyStrokeEventType, Constants } from '../../types/event.types';
 import { PluginConfigService } from './handleConfig';
@@ -7,7 +6,6 @@ import { PluginConfigService } from './handleConfig';
  * Analytics Service
  */
 export declare class AnalyticsService {
-    private cookieService;
     private httpService;
     private pluginConfig;
     /** SessionId of plugin */
@@ -20,10 +18,10 @@ export declare class AnalyticsService {
     constants: typeof Constants;
     /**
      * Analytics Service constructor
-     * @param cookieService
+     * @param pluginConfig
      * @param httpService
      */
-    constructor(cookieService: CookieService, httpService: HttpClient, pluginConfig: PluginConfigService);
+    constructor(httpService: HttpClient, pluginConfig: PluginConfigService);
     /**
      * Checking whether sessionId present in cookie or not
      * if no session id cookie present, adding new session id otherwise reusing the session id value
