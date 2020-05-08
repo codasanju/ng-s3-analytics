@@ -36,6 +36,7 @@ export interface AnalyticsBean {
     origin: string;
     performance: PerformanceBean;
     errors: string;
+    userInfo: UserBean;
 }
 export interface PerformanceBean {
     navigation: PerformanceNavigation;
@@ -73,4 +74,12 @@ export interface MemoryUsageBean {
     jsHeapSizeLimit: number;
     totalJSHeapSize: number;
     usedJSHeapSize: number;
+}
+export interface UserBean {
+    userEmail: string;
+    userProfileImage: string;
+    userName: string;
+    userPhoneNumber: string;
+    userId: string;
+    otherInfo?: string;
 }

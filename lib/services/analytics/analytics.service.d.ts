@@ -1,13 +1,15 @@
-import { AnalyticsBean } from '../../analytics-bean/analytics-bean';
+import { AnalyticsBean, UserBean } from '../../analytics-bean/analytics-bean';
 import { HttpClient } from '@angular/common/http';
 import { EventLabels, KeyStrokeEventType, Constants } from '../../types/event.types';
 import { PluginConfigService } from './handleConfig';
+import { EnvironmentService } from '../environment/environment.service';
 /**
  * Analytics Service
  */
 export declare class AnalyticsService {
     private httpService;
     private pluginConfig;
+    private environmentService;
     /** SessionId of plugin */
     sessionId: string;
     /** Demographic info */
@@ -16,12 +18,13 @@ export declare class AnalyticsService {
     eventLabels: typeof EventLabels;
     /** Constants */
     constants: typeof Constants;
+    userInfo: UserBean;
     /**
      * Analytics Service constructor
      * @param pluginConfig
      * @param httpService
      */
-    constructor(httpService: HttpClient, pluginConfig: PluginConfigService);
+    constructor(httpService: HttpClient, pluginConfig: PluginConfigService, environmentService: EnvironmentService);
     /**
      * Checking whether sessionId present in cookie or not
      * if no session id cookie present, adding new session id otherwise reusing the session id value
@@ -96,4 +99,8 @@ export declare class AnalyticsService {
      * @param url - Page URL
      */
     private getUTMParameters;
+    /**
+     * Getting user info
+     */
+    private getUserInfo;
 }
