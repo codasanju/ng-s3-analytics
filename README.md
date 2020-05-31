@@ -37,7 +37,7 @@ npm install --save ng-s3-analytics
 import { NgS3AnalyticsModule } from '@codaglobal/ng-s3-analytics';
 
 imports: [
-     NgS3AnalyticsModule.forRoot(configuration: Configuration, pageDetection: Boolean)
+     NgS3AnalyticsModule
 ]
 ```
 The forRoot method accepts two parameters -  configurations (data collection api url & IP range to be restricted, it can have regex eg:- /192.168.143.*/g ) and a boolean which defines whether to track page load or not
