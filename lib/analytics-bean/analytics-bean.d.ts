@@ -2,6 +2,10 @@ import { KeyStrokeEventType } from '../types/event.types';
 export declare class Configuration {
     dataCollectionApi: string;
     remoteConfigApi: string;
+    track?: {
+        mouse: boolean;
+        scroll: boolean;
+    };
 }
 export interface PluginConfig {
     ignoreUrls: Array<string>;

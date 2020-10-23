@@ -10,4 +10,8 @@ export declare let environment: {
     ignoreIPRanges: string;
     ignoreDomains: any[];
     disableDemographicInfo: boolean;
+    track: {
+        mouse: boolean;
+        scroll: boolean;
+    };
 };

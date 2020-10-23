@@ -9,8 +9,9 @@ In-house analytics for enterprise level applications using Angular 6+, AWS S3 & 
 ## Table of Contents
 1. [Getting Started](#getting-started)
 2. [Usage](#usage)
-3. [Contribution](#contribution)
-4. [License](#license)
+3. [Custom Events](#customEvents)
+4. [Contribution](#contribution)
+5. [License](#license)
 
 <a name="getting-started"></a>
 
@@ -37,7 +38,7 @@ npm install --save ng-s3-analytics
 import { NgS3AnalyticsModule } from '@codaglobal/ng-s3-analytics';
 
 imports: [
-     NgS3AnalyticsModule
+     NgS3AnalyticsModule.forRoot(configuration: Configuration, pageDetection: Boolean)
 ]
 ```
 The forRoot method accepts two parameters -  configurations (data collection api url & IP range to be restricted, it can have regex eg:- /192.168.143.*/g ) and a boolean which defines whether to track page load or not
@@ -89,6 +90,27 @@ export class TestComponent {
 
   exampleMethod() {
     this.environmentService.setConfigurationToEnvironment(configuration, isPageLoadingToBeDetected);
+  }
+}
+
+```
+
+
+<a name="customEvents"></a>
+## Custom Events
+
+User will be able to trigger custom events from their typescript/js by using the custom event service class. Here make sure that, the data type being passed is already configured in your additional info schema
+
+```typescript
+import { CustomEventService } from '@codaglobal/ng-s3-analytics';
+
+constructor(private customEventService: CustomEventService) { }
+
+export class TestComponent {
+
+
+  triggerMyEvent() {
+    this.customEventService.pushEvent('MY_EVENT_LABEL', 'My data');
   }
 }
 

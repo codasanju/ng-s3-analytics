@@ -10,7 +10,6 @@ export declare class AnalyticsService {
     private httpService;
     private pluginConfig;
     private environmentService;
-    private platformId;
     /** SessionId of plugin */
     sessionId: string;
     /** Demographic info */
@@ -25,7 +24,7 @@ export declare class AnalyticsService {
      * @param pluginConfig
      * @param httpService
      */
-    constructor(httpService: HttpClient, pluginConfig: PluginConfigService, environmentService: EnvironmentService, platformId: any);
+    constructor(httpService: HttpClient, pluginConfig: PluginConfigService, environmentService: EnvironmentService);
     /**
      * Checking whether sessionId present in cookie or not
      * if no session id cookie present, adding new session id otherwise reusing the session id value

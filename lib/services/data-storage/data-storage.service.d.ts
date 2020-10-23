@@ -6,7 +6,6 @@ import { Constants } from '../../types/event.types';
 export declare class DataStorageService {
     private analyticalService;
     private http;
-    private platformId;
     constants: typeof Constants;
     allDataAnalyticsArray: Array<any>;
     allDataAnalytics: {
@@ -17,7 +16,7 @@ export declare class DataStorageService {
     keys: Array<any>;
     idleTimerSubscription: Subscription;
     eventCollector: Map<any, any>;
-    constructor(analyticalService: AnalyticsService, http: HttpClient, platformId: any);
+    constructor(analyticalService: AnalyticsService, http: HttpClient);
     private routeDetails;
     count: number;
     setUrlKey(data: string): void;
