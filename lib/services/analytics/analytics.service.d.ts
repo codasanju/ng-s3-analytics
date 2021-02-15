@@ -74,6 +74,7 @@ export declare class AnalyticsService {
         keyStrokeData?: KeyStrokeEventType;
         consoleErrors?: string;
     }): AnalyticsBean;
+    private getOrigin;
     /**
      * Event details
      * @param value

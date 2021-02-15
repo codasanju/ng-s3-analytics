@@ -14,4 +14,5 @@ export declare let environment: {
         mouse: boolean;
         scroll: boolean;
     };
+    origin: string;
 };
